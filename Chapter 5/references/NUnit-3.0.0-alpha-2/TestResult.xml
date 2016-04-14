@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run id="2" name="chapter07.code._parallel.dll" fullname="Z:\Dropbox\PACKT\Testing Applications in F#\book\chapter07\code\chapter07.code.parallel\bin\Debug\chapter07.code._parallel.dll" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.390341">
+  <environment nunit-version="3.0.5419.36033" clr-version="2.0.50727.8009" os-version="Microsoft Windows NT 6.3.9600.0" platform="Win32NT" cwd="Z:\Dropbox\PACKT\Testing Applications in F#\book\chapter07\code\references\NUnit-3.0.0-alpha-2" machine-name="MIKAELLUNDI35B5" user="mikaellundin" user-domain="MIKAELLUNDI35B5" culture="en-US" uiculture="en-US" />
+  <test-suite type="Assembly" id="1006" name="chapter07.code._parallel.dll" fullname="Z:\Dropbox\PACKT\Testing Applications in F#\book\chapter07\code\chapter07.code.parallel\bin\Debug\chapter07.code._parallel.dll" runstate="Runnable" testcasecount="5" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.329000" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5">
+    <properties>
+      <property name="LevelOfParallelization" value="5" />
+      <property name="_PID" value="3132" />
+      <property name="_APPDOMAIN" value="test-domain-chapter07.code._parallel.dll" />
+    </properties>
+    <test-suite type="TestSuite" id="1007" name="chapter07" fullname="chapter07" runstate="Runnable" testcasecount="5" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.314000" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5">
+      <test-suite type="TestSuite" id="1008" name="code" fullname="chapter07.code" runstate="Runnable" testcasecount="5" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.313000" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5">
+        <test-suite type="TestSuite" id="1009" name="_parallel" fullname="chapter07.code._parallel" runstate="Runnable" testcasecount="5" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.313000" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5">
+          <test-suite type="TestFixture" id="1000" name="_1232OS_07_06" fullname="chapter07.code._parallel._1232OS_07_06" runstate="Runnable" testcasecount="5" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.310000" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="5">
+            <test-case id="1001" name="should get address history from SSN number" fullname="chapter07.code._parallel._1232OS_07_06.should get address history from SSN number" runstate="Runnable" seed="2031539648" result="Passed" start-time="2014-11-04 22:42:41Z" end-time="2014-11-04 22:42:44Z" duration="3.139000" asserts="1">
+              <properties>
+                <property name="ParallelScope" value="Self" />
+              </properties>
+              <output>EXEC @RETURN_VALUE = [dbo].[SetupTestData] 
+-- @RETURN_VALUE: Output Int (Size = -1; Prec = 0; Scale = 0) [Null]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+SELECT [t2].[ID], [t2].[UniqueID], [t2].[StreetName], [t2].[StreetNumber], [t2].[StreetLetter], [t2].[ApartmentNumber], [t2].[Floor], [t2].[PostalCode], [t2].[Town]
+FROM [dbo].[NationalRegistrationAddress] AS [t0]
+INNER JOIN [dbo].[Person] AS [t1] ON [t0].[Person] = [t1].[ID]
+INNER JOIN [dbo].[Address] AS [t2] ON [t0].[Address] = [t2].[ID]
+WHERE [t1].[SSN] = @p0
+-- @p0: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [196403063374]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+</output>
+            </test-case>
+            <test-case id="1003" name="should get all habitants of address" fullname="chapter07.code._parallel._1232OS_07_06.should get all habitants of address" runstate="Runnable" seed="1663476057" result="Passed" start-time="2014-11-04 22:42:44Z" end-time="2014-11-04 22:42:44Z" duration="0.091000" asserts="1">
+              <properties>
+                <property name="ParallelScope" value="Self" />
+              </properties>
+              <output>EXEC @RETURN_VALUE = [dbo].[SetupTestData] 
+-- @RETURN_VALUE: Output Int (Size = -1; Prec = 0; Scale = 0) [Null]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+SELECT [t1].[ID], [t1].[SSN], [t1].[FirstName], [t1].[GivenName], [t1].[MiddleName], [t1].[LastName], [t1].[BirthDate]
+FROM [dbo].[NationalRegistrationAddress] AS [t0]
+INNER JOIN [dbo].[Person] AS [t1] ON [t0].[Person] = [t1].[ID]
+INNER JOIN [dbo].[Address] AS [t2] ON [t0].[Address] = [t2].[ID]
+WHERE ([t2].[StreetName] = @p0) AND ([t2].[StreetNumber] = @p1) AND ([t2].[StreetLetter] IS NULL) AND ([t2].[PostalCode] = @p2)
+-- @p0: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [Lantgatan]
+-- @p1: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [38]
+-- @p2: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [12559]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+</output>
+            </test-case>
+            <test-case id="1005" name="should get empty result of habitants when address doesn't exist" fullname="chapter07.code._parallel._1232OS_07_06.should get empty result of habitants when address doesn't exist" runstate="Runnable" seed="994105559" result="Passed" start-time="2014-11-04 22:42:44Z" end-time="2014-11-04 22:42:44Z" duration="0.036000" asserts="1">
+              <properties>
+                <property name="ParallelScope" value="Self" />
+              </properties>
+              <output>EXEC @RETURN_VALUE = [dbo].[SetupTestData] 
+-- @RETURN_VALUE: Output Int (Size = -1; Prec = 0; Scale = 0) [Null]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+SELECT [t1].[ID], [t1].[SSN], [t1].[FirstName], [t1].[GivenName], [t1].[MiddleName], [t1].[LastName], [t1].[BirthDate]
+FROM [dbo].[NationalRegistrationAddress] AS [t0]
+INNER JOIN [dbo].[Person] AS [t1] ON [t0].[Person] = [t1].[ID]
+INNER JOIN [dbo].[Address] AS [t2] ON [t0].[Address] = [t2].[ID]
+WHERE ([t2].[StreetName] = @p0) AND ([t2].[StreetNumber] = @p1) AND ([t2].[StreetLetter] IS NULL) AND ([t2].[PostalCode] = @p2)
+-- @p0: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [Teststreet]
+-- @p1: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [99]
+-- @p2: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [99999]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+</output>
+            </test-case>
+            <test-case id="1004" name="should get the only habitant of an address" fullname="chapter07.code._parallel._1232OS_07_06.should get the only habitant of an address" runstate="Runnable" seed="1836759380" result="Passed" start-time="2014-11-04 22:42:44Z" end-time="2014-11-04 22:42:44Z" duration="0.015000" asserts="1">
+              <properties>
+                <property name="ParallelScope" value="Self" />
+              </properties>
+              <output>EXEC @RETURN_VALUE = [dbo].[SetupTestData] 
+-- @RETURN_VALUE: Output Int (Size = -1; Prec = 0; Scale = 0) [Null]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+SELECT [t1].[ID], [t1].[SSN], [t1].[FirstName], [t1].[GivenName], [t1].[MiddleName], [t1].[LastName], [t1].[BirthDate]
+FROM [dbo].[NationalRegistrationAddress] AS [t0]
+INNER JOIN [dbo].[Person] AS [t1] ON [t0].[Person] = [t1].[ID]
+INNER JOIN [dbo].[Address] AS [t2] ON [t0].[Address] = [t2].[ID]
+WHERE ([t2].[StreetName] = @p0) AND ([t2].[StreetNumber] = @p1) AND ([t2].[StreetLetter] = @p2) AND ([t2].[PostalCode] = @p3)
+-- @p0: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [Stångmästarevägen]
+-- @p1: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [11-13]
+-- @p2: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [A]
+-- @p3: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [15955]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+</output>
+            </test-case>
+            <test-case id="1002" name="should return empty address history when not found" fullname="chapter07.code._parallel._1232OS_07_06.should return empty address history when not found" runstate="Runnable" seed="202129304" result="Passed" start-time="2014-11-04 22:42:44Z" end-time="2014-11-04 22:42:44Z" duration="0.013000" asserts="1">
+              <properties>
+                <property name="ParallelScope" value="Self" />
+              </properties>
+              <output>EXEC @RETURN_VALUE = [dbo].[SetupTestData] 
+-- @RETURN_VALUE: Output Int (Size = -1; Prec = 0; Scale = 0) [Null]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+SELECT [t2].[ID], [t2].[UniqueID], [t2].[StreetName], [t2].[StreetNumber], [t2].[StreetLetter], [t2].[ApartmentNumber], [t2].[Floor], [t2].[PostalCode], [t2].[Town]
+FROM [dbo].[NationalRegistrationAddress] AS [t0]
+INNER JOIN [dbo].[Person] AS [t1] ON [t0].[Person] = [t1].[ID]
+INNER JOIN [dbo].[Address] AS [t2] ON [t0].[Address] = [t2].[ID]
+WHERE [t1].[SSN] = @p0
+-- @p0: Input NVarChar (Size = 4000; Prec = 0; Scale = 0) [1234567891234]
+-- Context: SqlProvider(Sql2008) Model: AttributedMetaModel Build: 4.0.30319.33440
+
+</output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

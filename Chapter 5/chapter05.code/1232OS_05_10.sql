@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE [Truncate] AS
+BEGIN
+
+	DELETE FROM [Property]
+	DELETE FROM [PropertyType]
+	DELETE FROM [PageType]
+END
+GO

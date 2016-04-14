@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>nunit.engine.api</name>
+    </assembly>
+    <members>
+        <member name="T:NUnit.Engine.ILogger">
+            <summary>
+            Interface for logging within the engine
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Error(System.String)">
+            <summary>
+            Logs the specified message at the error level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Error(System.String,System.Object[])">
+            <summary>
+            Logs the specified message at the error level.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Warning(System.String)">
+            <summary>
+            Logs the specified message at the warning level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Warning(System.String,System.Object[])">
+            <summary>
+            Logs the specified message at the warning level.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Info(System.String)">
+            <summary>
+            Logs the specified message at the info level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Info(System.String,System.Object[])">
+            <summary>
+            Logs the specified message at the info level.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Debug(System.String)">
+            <summary>
+            Logs the specified message at the debug level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:NUnit.Engine.ILogger.Debug(System.String,System.Object[])">
+            <summary>
+            Logs the specified message at the debug level.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="T:NUnit.Engine.InternalTraceLevel">
+            <summary>
+            InternalTraceLevel is an enumeration controlling the
+            level of detailed presented in the internal log.
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Default">
+            <summary>
+            Use the default settings as specified by the user.
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Off">
+            <summary>
+            Do not display any trace messages
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Error">
+            <summary>
+            Display Error messages only
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Warning">
+            <summary>
+            Display Warning level and higher messages
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Info">
+            <summary>
+            Display informational and higher messages
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Debug">
+            <summary>
+            Display debug messages and higher - i.e. all messages
+            </summary>
+        </member>
+        <member name="F:NUnit.Engine.InternalTraceLevel.Verbose">
+            <summary>
+            Display debug messages and higher - i.e. all messages
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.IFrameworkDriver">
+            <summary>
+            The IFrameworkDriver interface is implemented by a class that
+            is able to use an external framework to explore or run tests
+            under the engine.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.IFrameworkDriver.Load">
+            <summary>
+            Loads the tests in an assembly.
+            </summary>
+            <returns>An Xml string representing the loaded test</returns>
+        </member>
+        <member name="M:NUnit.Engine.IFrameworkDriver.CountTestCases(NUnit.Engine.TestFilter)">
+            <summary>
+            Count the test cases that would be executed.
+            </summary>
+            <param name="filter">A TestFilter to use in counting the tests</param>
+            <returns>The number of test cases counted</returns>
+        </member>
+        <member name="M:NUnit.Engine.IFrameworkDriver.Run(NUnit.Engine.ITestEventListener,NUnit.Engine.TestFilter)">
+            <summary>
+            Executes the tests in an assembly.
+            </summary>
+            <param name="listener">An ITestEventHandler that receives progress notices</param>
+            <param name="filter">A filter that controls which tests are executed</param>
+            <returns>An Xml string representing the result</returns>
+        </member>
+        <member name="M:NUnit.Engine.IFrameworkDriver.Explore(NUnit.Engine.TestFilter)">
+            <summary>
+            Returns information about the tests in an assembly.
+            </summary>
+            <param name="filter">A filter indicating which tests to include</param>
+            <returns>An Xml string representing the tests</returns>
+        </member>
+        <member name="M:NUnit.Engine.IFrameworkDriver.StopRun(System.Boolean)">
+            <summary>
+            Cancel the ongoing test run. If no  test is running, the call is ignored.
+            </summary>
+            <param name="force">If true, cancel any ongoing test threads, otherwise wait for them to complete.</param>
+        </member>
+        <member name="T:NUnit.Engine.ILogging">
+            <summary>
+            Interface to abstract getting loggers
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ILogging.GetLogger(System.String)">
+            <summary>
+            Gets the logger.
+            </summary>
+            <param name="name">The name of the logger to get.</param>
+            <returns></returns>
+        </member>
+        <member name="T:NUnit.Engine.IServiceLocator">
+            <summary>
+            IServiceLocator allows clients to locate any NUnit services
+            for which the interface is referenced. In normal use, this
+            linits it to those services using interfaces defined in the 
+            nunit.engine.api assembly.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.IServiceLocator.GetService``1">
+            <summary>
+            Return a specified type of service
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.IServiceLocator.GetService(System.Type)">
+            <summary>
+            Return a specified type of service
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.SettingsEventHandler">
+            <summary>
+            Event handler for settings changes
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The <see cref="T:NUnit.Engine.SettingsEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:NUnit.Engine.SettingsEventArgs">
+            <summary>
+            Event argument for settings changes
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.SettingsEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NUnit.Engine.SettingsEventArgs"/> class.
+            </summary>
+            <param name="settingName">Name of the setting that has changed.</param>
+        </member>
+        <member name="P:NUnit.Engine.SettingsEventArgs.SettingName">
+            <summary>
+            Gets the name of the setting that has changed
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.ISettings">
+            <summary>
+            The ISettings interface is used to access all user
+            settings and options.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ISettings.GetSetting(System.String)">
+            <summary>
+            Load a setting from the storage.
+            </summary>
+            <param name="settingName">Name of the setting to load</param>
+            <returns>Value of the setting or null</returns>
+        </member>
+        <member name="M:NUnit.Engine.ISettings.GetSetting``1(System.String,``0)">
+            <summary>
+            Load a setting from the storage or return a default value
+            </summary>
+            <param name="settingName">Name of the setting to load</param>
+            <param name="defaultValue">Value to return if the setting is missing</param>
+            <returns>Value of the setting or the default value</returns>
+        </member>
+        <member name="M:NUnit.Engine.ISettings.RemoveSetting(System.String)">
+            <summary>
+            Remove a setting from the storage
+            </summary>
+            <param name="settingName">Name of the setting to remove</param>
+        </member>
+        <member name="M:NUnit.Engine.ISettings.RemoveGroup(System.String)">
+            <summary>
+            Remove an entire group of settings from the storage
+            </summary>
+            <param name="groupName">Name of the group to remove</param>
+        </member>
+        <member name="M:NUnit.Engine.ISettings.SaveSetting(System.String,System.Object)">
+            <summary>
+            Save a setting in the storage
+            </summary>
+            <param name="settingName">Name of the setting to save</param>
+            <param name="settingValue">Value to be saved</param>
+        </member>
+        <member name="E:NUnit.Engine.ISettings.Changed">
+            <summary>
+            Occurs when the settings are changed.
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.ITestEngine">
+            <summary>
+            ITestEngine represents an instance of the test engine.
+            Clients wanting to discover, explore or run tests start
+            require an instance of the engine, which is generally 
+            acquired from the TestEngineActivator class.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestEngine.InitializeServices">
+            <summary>
+            Create and initialize the standard set of services used in the Engine.
+            The
+            This interface is not normally called by user code. Programs linking 
+            only to the nunit.engine.api assembly are given a
+            pre-initialized instance of TestEngine. Programs 
+            that link directly to nunit.engine usually do so
+            in order to perform custom initialization.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestEngine.GetRunner(NUnit.Engine.TestPackage)">
+            <summary>
+            Returns a test runner instance for use by clients in discovering,
+            exploring and exeuting tests.
+            </summary>
+            <param name="package">The TestPackage for which the runner is intended.</param>
+            <returns>An ITestRunner.</returns>
+        </member>
+        <member name="P:NUnit.Engine.ITestEngine.Services">
+            <summary>
+            Gets the IServiceLocator interface, which gives access to
+            certain services provided by the engine.
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.ITestEngine.WorkDirectory">
+            <summary>
+            Gets and sets the directory path used by the engine for saving files.
+            Some services may ignore changes to this path made after initialization.
+            The default value is the current directory.
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.ITestEngine.InternalTraceLevel">
+            <summary>
+            Gets and sets the InternalTraceLevel used by the engine. Changing this
+            setting after initialization will have no effect. The default value
+            is the value saved in the NUnit settings.
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.ITestEventListener">
+            <summary>
+            The ITestListener interface is used to receive notices of significant
+            events while a test is running. It's single method accepts an Xml string, 
+            which may represent any event generated by the test framework, the driver
+            or any of the runners internal to the engine. Use of Xml means that
+            any driver and framework may add additional events and the engine will
+            simply pass them on through this interface.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestEventListener.OnTestEvent(System.String)">
+            <summary>
+            Handle a progress report or other event.
+            </summary>
+            <param name="report">An XML progress report.</param>
+        </member>
+        <member name="T:NUnit.Engine.ITestRunner">
+            <summary>
+            Interface implemented by all test runners.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.Load">
+            <summary>
+            Load a TestPackage for possible execution
+            </summary>
+            <returns>An XmlNode representing the loaded package.</returns>
+            <remarks>
+            This method is normally optional, since Explore and Run call
+            it automatially when necessary. The method is kept in order
+            to make it easier to convert older programs that use it.
+            </remarks>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.Unload">
+            <summary>
+            Unload any loaded TestPackage. If none is loaded,
+            the call is ignored.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.Reload">
+            <summary>
+            Reload the current TestPackage
+            </summary>
+            <returns>An XmlNode representing the loaded package.</returns>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.CountTestCases(NUnit.Engine.TestFilter)">
+            <summary>
+            Count the test cases that would be run under
+            the specified filter.
+            </summary>
+            <param name="filter">A TestFilter</param>
+            <returns>The count of test cases</returns>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.Run(NUnit.Engine.ITestEventListener,NUnit.Engine.TestFilter)">
+            <summary>
+            Run the tests in the loaded TestPackage and return a test result. The tests
+            are run synchronously and the listener interface is notified as it progresses.
+            </summary>
+            <param name="listener">The listener that is notified as the run progresses</param>
+            <param name="filter">A TestFilter used to select tests</param>
+            <returns>An XmlNode giving the result of the test execution</returns>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.RunAsync(NUnit.Engine.ITestEventListener,NUnit.Engine.TestFilter)">
+            <summary>
+            Start a run of the tests in the loaded TestPackage. The tests are run
+            asynchronously and the listener interface is notified as it progresses.
+            </summary>
+            <param name="listener">The listener that is notified as the run progresses</param>
+            <param name="filter">A TestFilter used to select tests</param>
+            <returns></returns>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.StopRun(System.Boolean)">
+            <summary>
+            Cancel the ongoing test run. If no  test is running, the call is ignored.
+            </summary>
+            <param name="force">If true, cancel any ongoing test threads, otherwise wait for them to complete.</param>
+        </member>
+        <member name="M:NUnit.Engine.ITestRunner.Explore(NUnit.Engine.TestFilter)">
+            <summary>
+            Explore a loaded TestPackage and return information about the tests found.
+            </summary>
+            <param name="filter">The TestFilter to be used in selecting tests to explore.</param>
+            <returns>An XmlNode representing the tests fould.</returns>
+        </member>
+        <member name="P:NUnit.Engine.ITestRunner.IsTestRunning">
+            <summary>
+            Get a flag indicating whether a test is running
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.NUnitEngineException">
+            <summary>
+            NUnitEngineException is thrown when the engine has been
+            called with improper values or when a particular facility
+            is not available.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.NUnitEngineException.#ctor(System.String)">
+            <summary>
+            Construct with a message
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.NUnitEngineException.#ctor(System.String,System.Exception)">
+            <summary>
+            Construct with a message and inner exception
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:NUnit.Engine.NUnitEngineException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.IRecentFiles">
+            <summary>
+            The IRecentFiles interface is used to isolate the app
+            from various implementations of recent files.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.IRecentFiles.SetMostRecent(System.String)">
+            <summary>
+            Set the most recent file name, reordering
+            the saved names as needed and removing the oldest
+            if the max number of files would be exceeded.
+            The current CLR version is used to create the entry.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.IRecentFiles.Remove(System.String)">
+            <summary>
+            Remove a file from the list
+            </summary>
+            <param name="fileName">The name of the file to remove</param>
+        </member>
+        <member name="P:NUnit.Engine.IRecentFiles.MaxFiles">
+            <summary>
+            The max number of files saved
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.IRecentFiles.Entries">
+            <summary>
+            Get a list of all the file entries
+            </summary>
+            <returns>The most recent file list</returns>
+        </member>
+        <member name="T:NUnit.Engine.TestEngineActivator">
+            <summary>
+            TestEngineActivator creates an instance of the test engine and returns an ITestEngine interface.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.TestEngineActivator.CreateInstance">
+            <summary>
+            Create an instance of the test engine using default values for the assembly and type names.
+            </summary>
+            <returns>An ITestEngine.</returns>
+        </member>
+        <member name="M:NUnit.Engine.TestEngineActivator.CreateInstance(System.String,System.String)">
+            <summary>
+            Create an instance of the test engine using provided values for the assembly and type names.
+            This method is intended for use in experimenting with alternative implementations.
+            </summary>
+            <param name="assemblyName">The name of the assembly to be used.</param>
+            <param name="typeName">The name of the Type to be used.</param>
+            <returns>An ITestEngine.</returns>
+        </member>
+        <member name="T:NUnit.Engine.TestFilter">
+            <summary>
+            Abstract base for all test filters. A filter is represented
+            by an XmlNode with &lt;filter&gt; as it's topmost element.
+            In the console runner, filters serve only to carry this
+            XML representation, as all filtering is done by the engine.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.TestFilter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NUnit.Engine.TestFilter"/> class.
+            </summary>
+            <param name="xmlText">The XML text that specifies the filter.</param>
+        </member>
+        <member name="M:NUnit.Engine.TestFilter.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NUnit.Engine.TestFilter"/> class.
+            </summary>
+            <param name="node">The XML node that specifies the filter.</param>
+        </member>
+        <member name="F:NUnit.Engine.TestFilter.Empty">
+            <summary>
+            The empty filter - one that always passes.
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.TestFilter.Text">
+            <summary>
+            Gets the XML representation of this filter as a string.
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.TestFilter.Xml">
+            <summary>
+            Gets the XML representation of this filter as an XmlNode
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.TestPackage">
+            <summary>
+            TestPackage holds information about a set of tests to
+            be loaded by a TestRunner. Each TestPackage represents
+            tests for a single assembly. Multiple assemblies are
+            represented by use of subpackages.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.TestPackage.#ctor(System.String)">
+            <summary>
+            Construct a TestPackage, specifying a file path for
+            the assembly or project to be used.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:NUnit.Engine.TestPackage.#ctor(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Construct an anonymous TestPackage that wraps 
+            multiple assemblies or projects as subpackages.
+            </summary>
+            <param name="testFiles"></param>
+        </member>
+        <member name="M:NUnit.Engine.TestPackage.Add(System.String)">
+            <summary>
+            Add a test file to the package.
+            </summary>
+            <param name="testFile">The test file to be added</param>
+        </member>
+        <member name="M:NUnit.Engine.TestPackage.GetSetting``1(System.String,``0)">
+            <summary>
+            Return the value of a setting or a default.
+            </summary>
+            <param name="name">The name of the setting</param>
+            <param name="defaultSetting">The default value</param>
+            <returns></returns>
+        </member>
+        <member name="P:NUnit.Engine.TestPackage.Name">
+            <summary>
+            Gets the name of the package
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.TestPackage.FullName">
+            <summary>
+            Gets the path to the file containing tests. It may be
+            an assembly or a recognized project type.
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.TestPackage.TestFiles">
+            <summary>
+            Gets an array of the test files contained in this package
+            </summary>
+        </member>
+        <member name="P:NUnit.Engine.TestPackage.Settings">
+            <summary>
+            Gets the settings dictionary for this package.
+            </summary>
+        </member>
+        <member name="T:NUnit.Engine.ITestRun">
+            <summary>
+            The ITestRun class represents an ongoing test run.
+            </summary>
+        </member>
+        <member name="M:NUnit.Engine.ITestRun.Stop(System.Boolean)">
+            <summary>
+            Stop the current test run, specifying whether to force cancellation. 
+            If no test is running, the method returns without error.
+            </summary>
+            <param name="force">If true, force the stop by cancelling all threads.</param>
+            <remarks>
+            Note that cancelling the threads is intrinsically unsafe and is only
+            provided on the assumption that tests do not impact production data.
+            </remarks>
+        </member>
+        <member name="P:NUnit.Engine.ITestRun.Result">
+            <summary>
+            Get the result of the test.
+            </summary>
+            <returns>An XmlNode representing the test run result</returns>
+        </member>
+    </members>
+</doc>

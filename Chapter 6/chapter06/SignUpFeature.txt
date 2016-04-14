@@ -1,0 +1,16 @@
+﻿Feature: Sign up form
+
+Scenario: E-mail registration should only accept valid addresses
+	Given I've entered my name and agreed to terms and conditions
+	When I enter <email> into the e-mail field
+	Then the page should let me know the registration was <success>
+
+Examples:
+	| email                       | success |
+	| hello@mikaellundin.name     | true    |
+	| hello.you@mikaellundin.name | true    |
+	| hey@litemedia.se            | true    |
+	| invalid                     | false   |
+	| @mikaellundin.name          | false   |
+	| hello.you.mikaellundin.name | false   |
+	| hey@litemedia               | false   |
