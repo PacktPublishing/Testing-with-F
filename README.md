@@ -14,3 +14,7 @@ You can also refer to the following books:
 * [Windows Phone 7.5 Application Development with F#](https://www.packtpub.com/application-development/windows-phone-75-application-development-f?utm_source=github&utm_medium=related&utm_campaign=9781849687843)
 * [F# for Quantitative Finance](https://www.packtpub.com/big-data-and-business-intelligence/f-quantitative-finance?utm_source=github&utm_medium=related&utm_campaign=9781782164623)
 * [F# for Machine Learning Essentials](https://www.packtpub.com/big-data-and-business-intelligence/f-machine-learning?utm_source=github&utm_medium=related&utm_campaign=9781783989348)
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to download a free PDF copy of this book.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781784391232">https://packt.link/free-ebook/9781784391232 </a> </p>
